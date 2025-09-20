@@ -1,0 +1,21 @@
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.suo
+*.user
+*.opendb
+*.VC.db
+
+# JUCE build outputs
+**/Builds/
+**/x64/
+**/Win64/
+**/Debug*/
+**/Release*/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+
+# JUCE SDK folder
+JUCE/
