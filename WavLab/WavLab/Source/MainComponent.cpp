@@ -1,27 +1,28 @@
 #include "MainComponent.h"
 
-//==============================================================================
 MainComponent::MainComponent()
 {
-    setSize (400, 300); // window size
-}
+    setSize (900, 600);
 
-MainComponent::~MainComponent()
-{
+    addAndMakeVisible (topBar);
+    addAndMakeVisible (sideBar);
+    addAndMakeVisible (content);
 }
 
 void MainComponent::paint (juce::Graphics& g)
 {
-    g.fillAll (juce::Colours::black);           // background
-    g.setColour (juce::Colours::white);         // text color
-    g.setFont (juce::Font (24.0f));             // font size
-    g.drawText ("Hello, World!",                // text
-                getLocalBounds(),               // bounds
-                juce::Justification::centred,   // centered
-                true);                          // use ellipses if too long
+    g.fillAll (juce::Colours::black);
 }
 
 void MainComponent::resized()
 {
-    // layout child components here if you add any
+    auto bounds = getLocalBounds();
+
+    auto top = bounds.removeFromTop (kTopBarHeight);
+    topBar.setBounds (top);
+
+    auto left = bounds.removeFromLeft (kSideBarWidth);
+    sideBar.setBounds (left);
+
+    content.setBounds (bounds); // whatever space is left
 }

@@ -1,27 +1,26 @@
 #pragma once
-
 #include <JuceHeader.h>
+#include "TopBar.h"
+#include "SideBar.h"
+#include "ContentArea.h"
 
-//==============================================================================
-/*
-    This component lives inside our window, and this is where you should put all
-    your controls and content.
-*/
-class MainComponent  : public juce::Component
+class MainComponent : public juce::Component
 {
 public:
-    //==============================================================================
     MainComponent();
-    ~MainComponent() override;
+    ~MainComponent() override = default;
 
-    //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
 
 private:
-    //==============================================================================
-    // Your private member variables go here...
+    TopBar      topBar;
+    SideBar     sideBar;
+    ContentArea content;
 
+    // layout constants (tweak later / make user-configurable)
+    static constexpr int kTopBarHeight  = 48;
+    static constexpr int kSideBarWidth  = 200;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
